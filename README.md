@@ -4,7 +4,7 @@
 
 <strong>Bibliotecas utilizadas:</strong>
 
-  <br>• BeautifulSoup
+  • BeautifulSoup
   <br>• Urllib.Request
   <br>• Re
   <br>• Json
