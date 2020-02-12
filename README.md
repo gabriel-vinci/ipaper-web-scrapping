@@ -4,11 +4,11 @@
 
 <strong>Bibliotecas utilizadas:</strong>
 
-  <br>• BeautifulSoup</br>
-  <br>• Urllib.Request</br>
-  <br>• Re</br>
-  <br>• Json</br>
-  <br>• Xlsxwriter</br>
+  <br>• BeautifulSoup
+  <br>• Urllib.Request
+  <br>• Re
+  <br>• Json
+  <br>• Xlsxwriter
   
 <strong>Como utilizar</strong>
 
