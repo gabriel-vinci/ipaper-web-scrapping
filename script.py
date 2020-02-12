@@ -4,6 +4,7 @@ import re
 import json
 import xlsxwriter
 
+caminhoArquivo = '' #Escolher o caminho onde o arquivo será salvo. Exemplo: 'C:\\Users\\SEUUSUÁRIOAQUI\\Desktop\\'.
 nomeArquivo = '' #Escolher nome do arquivo que será gerado. Exemplo: 'Hiroshima 01-02'
 url = '' #Informar a URL onde estão os produtos. Exemplo: http://catalogos.hiroshima.com.br/11-12/hiroshima/?page=1#/
 
