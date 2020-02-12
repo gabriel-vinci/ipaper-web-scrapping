@@ -3,6 +3,7 @@
   iPaper é uma plataforma de venda online através de catálogos. O programa é feito para pegar os produtos ofertados na revista selecionada e colá-los em uma planilha Excel.
 
 <strong>Bibliotecas utilizadas:</strong>
+
   <br>• BeautifulSoup
   <br>• Urllib.Request
   <br>• Re
