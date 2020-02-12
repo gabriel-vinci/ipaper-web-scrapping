@@ -4,11 +4,11 @@
 
 <strong>Bibliotecas utilizadas:</strong>
 
-  <p>• BeautifulSoup</p>
-  <p>• Urllib.Request</p>
-  <p>• Re</p>
-  <p>• Json</p>
-  <p>• Xlsxwriter</p>
+  <br>• BeautifulSoup</br>
+  <br>• Urllib.Request</br>
+  <br>• Re</br>
+  <br>• Json</br>
+  <br>• Xlsxwriter</br>
   
 <strong>Como utilizar</strong>
 
@@ -23,4 +23,4 @@
   Esse é meu primeiro trabalho com web scrapping e, naturalmente, precisa de melhorias. Os próximos passos, na minha visão, seriam:
   
   • Um método de categorização dos produtos (como por exemplo 'Moda Feminina', 'Moda Masculina', 'Utilidades Cozinha', etc) e uma subcategorização (com informações como 'Vestido', 'Calça', 'Blusa', 'Panela'), para possibilitar uma análise mais completa.
-  <p>• Escrever o script de uma forma mais 'pythonica', pois nessa versão não utilizei dos melhores métodos da linguagem.
+  <br>• Escrever o script de uma forma mais 'pythonica', pois nessa versão não utilizei dos melhores métodos da linguagem.
