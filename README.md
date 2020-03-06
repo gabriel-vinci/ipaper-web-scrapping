@@ -26,7 +26,7 @@
   
 <strong>Observações gerais</strong>
 
-  Esse é meu primeiro trabalho com web scrapping e, naturalmente, precisa de melhorias. Os próximos passos, na minha visão, seriam:
+  Esse é meu primeiro trabalho com web scrapping e, naturalmente, precisa de melhorias. O próximo passo, na minha visão, seria:
   
   • Um método de categorização dos produtos (como por exemplo 'Moda Feminina', 'Moda Masculina', 'Utilidades Cozinha', etc) e uma subcategorização (com informações como 'Vestido', 'Calça', 'Blusa', 'Panela'), para possibilitar uma análise mais completa.
-  <br>• Escrever o script de uma forma mais 'pythonica', pois nessa versão não utilizei dos melhores métodos da linguagem.
+ 
