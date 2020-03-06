@@ -3,55 +3,74 @@ import urllib.request
 import re
 import json
 import xlsxwriter
+import datetime
 
-caminhoArquivo = '' #Escolher o caminho onde o arquivo será salvo. Exemplo: 'C:\\Users\\SEUUSUÁRIOAQUI\\Desktop\\'.
-nomeArquivo = '' #Escolher nome do arquivo que será gerado. Exemplo: 'Hiroshima 01-02'
-url = '' #Informar a URL onde estão os produtos. Exemplo: http://catalogos.hiroshima.com.br/11-12/hiroshima/?page=1#/
+class buscaProdutosIpaper:
+    def gerarArquivoExcel(self, nomeArquivo, caminhoArquivo):
+        self.workbook = xlsxwriter.Workbook(caminhoArquivo + nomeArquivo + '.xlsx')
+        self.worksheet = self.workbook.add_worksheet('Produtos')
+        self.worksheet.write(0, 0, "Tamanho")
+        self.worksheet.write(0, 1, "Código")
+        self.worksheet.write(0, 2, "Página")
+        self.worksheet.write(0, 3, "Preço")
+        self.worksheet.write(0, 4, "Nome")
+        print(f'Arquivo {nomeArquivo} foi gerado.\n')
 
-connection = urllib.request.urlopen(url)
-js = connection.read()
-soup = BeautifulSoup(js, "html.parser")
-data = str(soup.find_all("script"))
-aaa = re.findall('(https://)([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?', data)
-res = [''.join(tups) for tups in aaa]
+    def buscarURL(self, url):
+        print('Buscando...')
+        try:
+            conexao = urllib.request.urlopen(url)
+            js = conexao.read()
+            soup = BeautifulSoup(js, "html.parser")
+            data = str(soup.find_all("script"))
+            regex = re.findall('(https://)([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?', data)
+            self.res = [''.join(tups) for tups in regex]
+        except:
+            print('Erro! Verificar URL.')
 
-workbook = xlsxwriter.Workbook(nomeArquivo + '.xlsx')
-worksheet = workbook.add_worksheet('Produtos')
-worksheet.write(0, 0, "Tamanho")
-worksheet.write(0, 1, "Código")
-worksheet.write(0, 2, "Página")
-worksheet.write(0, 3, "Preço")
-worksheet.write(0, 4, "Nome")
-linha = 1
+    def buscarProdutos(self):
+        linha = 1
+        pagina = 1
+        try:
+            for i in range(0, 12):
+                produtos = urllib.request.urlopen(self.res[i])
+                soupUm = BeautifulSoup(produtos, "html.parser")
+                texto = json.loads(str(soupUm))
+                valores = texto.get("enrichments")
 
-try:
+                for j in range(len(valores)):
+                    valoresUm = valores[j]
 
-    for i in range(0, 12):
-        produtos = urllib.request.urlopen(res[i])
-        soupUm = BeautifulSoup(produtos, "html.parser")
-        texto = json.loads(str(soupUm))
-        valores = texto.get("enrichments")
+                    try:
+                        for b in valoresUm:
+                            self.worksheet.write(linha, 0, valoresUm['desc'])
+                            self.worksheet.write(linha, 1, valoresUm['productId'])
+                            self.worksheet.write(linha, 2, valoresUm['pagenumber'])
+                            self.worksheet.write(linha, 3, valoresUm['price'])
+                            self.worksheet.write(linha, 4, valoresUm['name'])
+                    except:
+                        continue
+                    linha += 1
 
-        for j in range(len(valores)):
-            valoresUm = valores[j]
+                    if pagina != valoresUm['pagenumber']:
+                        pagina = valoresUm['pagenumber']
 
-            try:
-                for b in valoresUm:
-                    worksheet.write(linha, 0, valoresUm['desc'])
-                    worksheet.write(linha, 1, valoresUm['productId'])
-                    worksheet.write(linha, 2, valoresUm['pagenumber'])
-                    worksheet.write(linha, 3, valoresUm['price'])
-                    worksheet.write(linha, 4, valoresUm['name'])
+                print(f'Os produtos até a página {pagina} foram registrados.')
+        except:
+            print("URL com erro.")
 
-            except:
-                continue
+        self.workbook.close()
 
-            print(f'Produto {linha}: OK')
-            linha += 1
+print('\n \n *** IPAPER WEB SCRAPPING *** \n \n')
+a = datetime.datetime.now()
+print(f'O script começou as: {a}\n')
 
-except:
-    print("URL com erro.")
+search = buscaProdutosIpaper()
+search.buscarURL('http://catalogos.hiroshima.com.br/11-12/hiroshima/?page=1#/')
+search.gerarArquivoExcel('Hiroshima 01-02', '')
+search.buscarProdutos()
 
-workbook.close()
+print('\nFinalizado!')
 
-print("Finalizado!")
+b = datetime.datetime.now()
+print(f'O script levou {b-a} para concluir a busca.')
