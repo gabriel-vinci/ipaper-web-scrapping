@@ -22,7 +22,7 @@
 
   Será gerada uma planilha conforme abaixo:
   
-  ![Alt Text](https://imgur.com/a/kKfHDPI)
+  ![Screenshot](output1.png)
   
 <strong>Observações gerais</strong>
 
