@@ -22,7 +22,7 @@
 
   Será gerada uma planilha conforme abaixo:
   
-  ![Screenshot](output1.png)
+  ![Alt text](output1.png?raw=true "Output1")
   
 <strong>Observações gerais</strong>
 
