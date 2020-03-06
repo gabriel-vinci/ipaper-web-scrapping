@@ -22,7 +22,7 @@
 
   Será gerada uma planilha conforme abaixo:
   
-  ![Alt text](output1.png?raw=true "Output1")
+  ![Alt text](https://github.com/gabriel-vinci/ipaper-web-scrapping/blob/master/output1.PNG?raw=true "Output1")
   
 <strong>Observações gerais</strong>
 
